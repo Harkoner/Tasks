@@ -79,7 +79,7 @@ class Task4:
 class Task5:
     def start(self):
         """К сожалению я не совсем научился именно рисовать эти ковры, но попытался реализовать работу оператора"""
-
+#12312312
         print('Task#5')
         print('Welcome to the carpet calculator.')
         height_number = input("Please enter the height between 10 and 99: ")
