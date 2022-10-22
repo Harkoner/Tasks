@@ -1,51 +1,54 @@
-def taskn():
+def task_n():
     tasks = (Task1(), Task2(), Task3(), Task4(), Task5())
     print('For now, is ready for check 5 tasks'.center(50))
     while True:
-            tasknumber = input('Please choose the number of task you are looking for:'.center(50))
-            if tasknumber.isdigit():
-                tasknumber = int(tasknumber)
-                if tasknumber <= 5:
-                    tasks[tasknumber - 1].start()
-                else:
-                    print('Choose the correct number'.center(50))
-            elif tasknumber == 'esc':
-                break
+        task_number = input('Please choose the number of task you are looking for:'.center(50))
+        if task_number.isdigit():
+            task_number = int(task_number)
+            if task_number <= 5:
+                tasks[task_number - 1].start()
             else:
                 print('Choose the correct number'.center(50))
-#Task1
+        elif task_number == 'esc':
+            break
+        else:
+            print('Choose the correct number'.center(50))
+
+
+# Task1
 class Task1:
     def start(self):
         print('Task#1')
         print('Welcome to the python\n'
               'Lets get started!\n'
               'Please enter your First name\n')
-        firstname = input()
+        first_name = input()
         print('What is your last name?')
-        secondname = input()
-        print(f"Hello, {firstname.title()} {secondname.title()}!, you just delved into Python. Great start")
+        second_name = input()
+        print(f"Hello, {first_name.title()} {second_name.title()}!, you just delved into Python. Great start")
 
 
-#Task2
+# Task2
 class Task2:
     def picture(self):
         thickness = 5
         c = 'H'
-        #Top Cone
+        # Top Cone
         for i in range(thickness):
-            print((c*i).rjust(thickness-1) + c + (c*i).ljust(thickness-1))
-        #Top Pillars
-        for i in range(thickness+1):
-            print((c*thickness).center(thickness*2) + (c*thickness).center(thickness*6))
-        #Middle Belt
-        for i in range((thickness+1)//2):
-            print((c*thickness*5).center(thickness*6))
-        #Bottom Pillars
-        for i in range(thickness+1):
-            print((c*thickness).center(thickness*2) + (c*thickness).center(thickness*6))
-        #Bottom Cone
+            print((c * i).rjust(thickness - 1) + c + (c * i).ljust(thickness - 1))
+        # Top Pillars
+        for i in range(thickness + 1):
+            print((c * thickness).center(thickness * 2) + (c * thickness).center(thickness * 6))
+        # Middle Belt
+        for i in range((thickness + 1) // 2):
+            print((c * thickness * 5).center(thickness * 6))
+        # Bottom Pillars
+        for i in range(thickness + 1):
+            print((c * thickness).center(thickness * 2) + (c * thickness).center(thickness * 6))
+        # Bottom Cone
         for i in range(thickness):
-            print(((c*(thickness-i-1)).rjust(thickness) + c + (c*(thickness-i-1)).ljust(thickness)).rjust(thickness*6))
+            print(((c * (thickness - i - 1)).rjust(thickness) + c + (c * (thickness - i - 1)).ljust(thickness)).rjust(
+                thickness * 6))
 
     def start(self):
         print('Task#2')
@@ -64,17 +67,18 @@ class Task2:
                 break
 
 
-#Task3
+# Task3
 class Task3:
     def start(self):
         print('Task#3')
         input('Нажмите любую клавишу чтобы увидеть ответ')
-        firstname = 'ivan'
-        secondname = 'ivanovich'
-        print('Hello', firstname.title(), secondname.title()+'!', 'You just delved into Python. Great start!')
+        first_name = 'ivan'
+        second_name = 'ivanovich'
+        print('Hello', first_name.title(), second_name.title() + '!', 'You just delved into Python. Great start!')
         input('Нажмите любую клавишу чтобы продолжить')
 
-#Task4
+
+# Task4
 class Task4:
     def start(self):
         print('Task#4')
@@ -86,7 +90,8 @@ class Task4:
         answer = input()
         while answer == 'y' or 'n':
             if answer == 'y':
-                print(f"Lets format our numer into the money equivalent \nNew format: {amount} to {'{0:3,.3f}'.format(amount)}")
+                print(
+                    f"Lets format our numer into the money equivalent \nNew format: {amount} to {'{0:3,.3f}'.format(amount)}")
                 break
             elif answer == 'n':
                 print('All right, go next')
@@ -94,7 +99,9 @@ class Task4:
             elif answer != 'y' or 'n':
                 Task4.start(self)
                 break
-#Task5
+
+
+# Task5
 class Task5:
     def start(self):
         print('Task#5')
@@ -119,5 +126,6 @@ class Task5:
                 print('Choose the correct number1'.center(50))
         return
 
+
 if __name__ == '__main__':
-    taskn()
+    task_n()
