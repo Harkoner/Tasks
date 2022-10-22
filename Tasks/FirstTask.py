@@ -37,8 +37,8 @@ class Task2:
         print('Task#2')
         print('Do you want to see a picture?')
         print('y/n')
-        answer1 = input()
-        if answer1 == 'y':
+        answer = input()
+        if answer == 'y':
             self.picture()
         else:
             print('All right, go next')
@@ -66,11 +66,11 @@ class Task4:
         print('Task#4')
         from random import uniform
         amount = (uniform(100_000, 100_500))
-        print(f"This is our random numer {amount}")
+        print(f"This is our random number {amount}")
         print('Do you wanna see the magic?')
         print('y/n')
-        answer2 = input()
-        if answer2 == 'y':
+        answer = input()
+        if answer == 'y':
               print(f"Lets format our numer into the money equivalent \nNew format: {'{0:3,.3f}'.format(amount)}")
         else:
               print('All right, go next for the Task#5')
