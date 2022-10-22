@@ -119,6 +119,5 @@ class Task5:
                 print('Choose the correct number1'.center(50))
         return
 
-#Task6
 if __name__ == '__main__':
     taskn()
