@@ -51,9 +51,10 @@ def task2():
 
 #Task3
 def task3():
-    """Так как у нас уже есть текст с первой задачи, используем его и выведем Фамилию и имя с заглавной буквы"""
     print('Task#3')
     input('Нажмите любую клавишу чтобы увидеть ответ')
+    firstname = 'Ivan'
+    secondname = 'Ivanovich'
     print('Hello', firstname.title(), secondname.title()+'!', 'You just delved into Python. Great start!')
     input('Нажмите любую клавишу чтобы продолжить')
 
@@ -103,10 +104,28 @@ def task5():
         else:
             print('We are sorry but we cannot make this size of carpet.')
     print('Thank you for using our service!')
+
+def taskn():
+    print('For now, is ready for check 5 tasks'.center(50))
+    tasknumber = input('Please choose the number of task you are looking for:'.center(50))
+    while tasknumber < '6':
+        if tasknumber == '1':
+            task1()
+            tasknumber = input('choose another number of task: ')
+        elif tasknumber == '2':
+            task2()
+            tasknumber = input('choose another number of task: ')
+        elif tasknumber == '3':
+            task3()
+            tasknumber = input('choose another number of task: ')
+        elif tasknumber == '4':
+            task4()
+            tasknumber = input('choose another number of task: ')
+        elif tasknumber == '5':
+            task5()
+            tasknumber = input('choose another number of task: ')
+    else:
+        return("We are sorry but this task isn't complited")
+
 if __name__ == '__main__':
-    print('Lets check my tasks')
-    task1()
-    task2()
-    task3()
-    task4()
-    task5()
+    taskn()
