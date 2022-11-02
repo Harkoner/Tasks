@@ -2,20 +2,20 @@ from random import randint
 
 
 def task_n():
-    tasks = (Task1(), Task2(), Task3())
+    tasks = (Task1(), Task2(), Task3(), Task4(), Task5())
     print('For now, is ready for check 5 tasks'.center(50))
     while True:
-            task_number = input('Please choose the number of task you are looking for:'.center(50))
-            if task_number.isdigit():
-                task_number = int(task_number)
-                if task_number <= 5:
-                    tasks[task_number - 1].start()
-                else:
-                    print('Choose the correct number'.center(50))
-            elif task_number == 'esc':
-                break
+        task_number = input('Please choose the number of task you are looking for:'.center(50))
+        if task_number.isdigit():
+            task_number = int(task_number)
+            if task_number <= 5:
+                tasks[task_number - 1].start()
             else:
                 print('Choose the correct number'.center(50))
+        elif task_number == 'esc':
+            break
+        else:
+            print('Choose the correct number'.center(50))
 
 
 class Task1:
@@ -57,6 +57,36 @@ class Task3:
         print('1)', '{:.2f}'.format(x))
         print('2)', int(x + (0.5 if (x - int(x)) > 0.5 else 0)))
         print('3)', '{:=011}'.format(x))
+
+
+class Task4:
+    def start(self):
+        x = input('Please type any integer number: ')
+        if int(x) > 0:
+            x = x[::-1]
+        else:
+            x = int(x) * -1
+            x = str(x)[::-1]
+            x = int(x) * -1
+        print(x)
+
+
+class Task5:
+    def start(self):
+        print('Task #5 [Junior+] ')
+        x = input('Please type any integer number: ')
+        positive32bit = (2 ** 32) - 1
+        negative32bit = (2 ** 32) * -1
+        if int(x) > 0:
+            x = x[::-1]
+        else:
+            x = int(x) * -1
+            x = str(x)[::-1]
+            x = int(x) * -1
+        if int(positive32bit) < int(x) < int(negative32bit):
+            print(x)
+        else:
+            print(0)
 
 
 if __name__ == '__main__':

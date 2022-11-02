@@ -1,11 +1,11 @@
 def task_n():
-    tasks = (Task1(), Task2(), Task3(), Task4(), Task5())
+    tasks = (Task1(), Task2(), Task3(), Task4(), Task5(), Task6())
     print('For now, is ready for check 5 tasks'.center(50))
     while True:
         task_number = input('Please choose the number of task you are looking for:'.center(50))
         if task_number.isdigit():
             task_number = int(task_number)
-            if task_number <= 5:
+            if task_number <= 6:
                 tasks[task_number - 1].start()
             else:
                 print('Choose the correct number'.center(50))
@@ -123,8 +123,34 @@ class Task5:
                 elif height not in range(10, 100, 1):
                     print('Choose the correct number'.center(50))
             else:
-                print('Choose the correct number1'.center(50))
+                print('Choose the correct number'.center(50))
         return
+
+
+class Task6:
+    def start(self):
+        print('Task#6 [Junior+]')
+        print('Welcome to the Strange Calculator, like a SC (bad joke)')
+        value = input('Please type any number: ')
+        if value.isdigit():
+            value = str(value)
+            count_value = len(value)
+            i = 0
+            result = []
+            answer = 1
+            while i < count_value:
+                if int(value[i]) != 0:
+                    result.append(int(value[i]))
+                i += 1
+            count_result = len(result)
+            i = 0
+            while i < count_result:
+                    answer = int(result[i]) * int(answer)
+                    i += 1
+            print(f'The answer is: {answer}')
+            input()
+        else:
+            print('Choose the correct number'.center(50))
 
 
 if __name__ == '__main__':
