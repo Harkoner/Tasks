@@ -20,6 +20,7 @@ def task_n():
 
 class Task1:
     def start(self):
+        print('Task#1 [-Junior]')
         while True:
             count = input('Type the count of numbers: ')
             if count.isdigit():
@@ -42,6 +43,7 @@ class Task1:
 
 class Task2:
     def start(self):
+        print('Task#2 [-Junior]')
         while True:
             x = randint(100, 200)
             y = randint(10, 99)
@@ -53,6 +55,7 @@ class Task2:
 
 class Task3:
     def start(self):
+        print('Task#3 [-Junior]')
         x = float(20.721)
         print('1)', '{:.2f}'.format(x))
         print('2)', int(x + (0.5 if (x - int(x)) > 0.5 else 0)))
@@ -61,6 +64,7 @@ class Task3:
 
 class Task4:
     def start(self):
+        print('Task#4 [Junior]')
         x = input('Please type any integer number: ')
         if int(x) > 0:
             x = x[::-1]
@@ -73,7 +77,7 @@ class Task4:
 
 class Task5:
     def start(self):
-        print('Task #5 [Junior+] ')
+        print('Task #5 [Junior+]')
         x = input('Please type any integer number: ')
         positive32bit = (2 ** 32) - 1
         negative32bit = (2 ** 32) * -1

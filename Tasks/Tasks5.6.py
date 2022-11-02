@@ -17,6 +17,7 @@ def task_n():
 
 class Task1:
     def start(self):
+        print('Task#1 [-Junior]')
         some_number = input('Please type the positive number: ')
         if some_number.isdigit():
             some_number = int(some_number)
@@ -40,6 +41,7 @@ class Task1:
 
 class Task2:
     def start(self):
+        print('Task#2 [-Junior]')
         x = input('Please type any integer number: ')
         devision2 = int(x) % 2
         answer = ''
@@ -58,6 +60,7 @@ class Task2:
 
 class Task3:
     def start(self):
+        print('Task#3 [-Junior]')
         n = input('Please type the number between 1 and 9: ')
         answer = ''
         if n.isdigit():
@@ -71,6 +74,7 @@ class Task3:
 
 class Task4:
     def start(self):
+        print('Task#4 [-Junior]')
         asker = input('Do you want to put your own text? [y/n]')
         if asker == 'n':
             print('We have some sort of text down here:')

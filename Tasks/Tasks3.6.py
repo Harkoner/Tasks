@@ -1,6 +1,6 @@
 def task_n():
     tasks = (Task1(), Task2(), Task3(), Task4(), Task5(), Task6())
-    print('For now, is ready for check 5 tasks'.center(50))
+    print('For now, is ready for check 6 tasks'.center(50))
     while True:
         task_number = input('Please choose the number of task you are looking for:'.center(50))
         if task_number.isdigit():
@@ -18,7 +18,7 @@ def task_n():
 # Task1
 class Task1:
     def start(self):
-        print('Task#1')
+        print('Task#1 [-Junior]')
         print('Welcome to the python\n'
               'Lets get started!\n'
               'Please enter your First name\n')
@@ -51,7 +51,7 @@ class Task2:
                 thickness * 6))
 
     def start(self):
-        print('Task#2')
+        print('Task#2 [-Junior]')
         print('Do you want to see a picture?')
         print('y/n')
         answer = input()
@@ -70,7 +70,7 @@ class Task2:
 # Task3
 class Task3:
     def start(self):
-        print('Task#3')
+        print('Task#3 [-Junior]')
         input('Нажмите любую клавишу чтобы увидеть ответ')
         first_name = 'ivan'
         second_name = 'ivanovich'
@@ -81,7 +81,7 @@ class Task3:
 # Task4
 class Task4:
     def start(self):
-        print('Task#4')
+        print('Task#4 [-Junior]')
         from random import uniform
         amount = (uniform(100_000, 100_500))
         print(f"This is our random number {amount}")
@@ -104,7 +104,7 @@ class Task4:
 # Task5
 class Task5:
     def start(self):
-        print('Task#5')
+        print('Task#5 [Junior]')
         print('Welcome to the carpet calculator.')
         while True:
             height_number = input("Please enter the height between 10 and 99: ")
@@ -142,13 +142,12 @@ class Task6:
                 if int(value[i]) != 0:
                     result.append(int(value[i]))
                 i += 1
-            count_result = len(result)
             i = 0
-            while i < count_result:
+            while i < len(result):
                     answer = int(result[i]) * int(answer)
                     i += 1
             print(f'The answer is: {answer}')
-            input()
+            input('Enter to continue')
         else:
             print('Choose the correct number'.center(50))
 
