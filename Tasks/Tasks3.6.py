@@ -1,16 +1,16 @@
-def task_n(): #Here is main func for selecting which task you wants to check
-    tasks = (Task1(), Task2(), Task3(), Task4(), Task5(), Task6()) #Here is variable which contains args which is our funcs of task
+def task_n():  #Here is main func for selecting which task you wants to check
+    tasks = (Task1(), Task2(), Task3(), Task4(), Task5(), Task6())  #Here is variable which contains args which is our funcs of task
     tasks_count = len(tasks)
     print(f'For now, is ready for check {tasks_count} tasks'.center(50))
     while True:
         task_number = input('Please choose the number of task you are looking for:'.center(50))
-        if task_number.isdigit(): #Check is inputed text is a number or not
+        if task_number.isdigit():  #Check is inputed text is a number or not
             task_number = int(task_number)
             if task_number <= tasks_count:
-                tasks[task_number - 1].start() #script to start our choosen task
+                tasks[task_number - 1].start()  #script to start our choosen task
             else:
                 print('Choose the correct number'.center(50))
-        elif task_number == 'esc': #extra func to exit the loop of choosing the tasks
+        elif task_number == 'esc':  #extra func to exit the loop of choosing the tasks
             break
         else:
             print('Choose the correct number'.center(50))
@@ -169,8 +169,8 @@ class Task6:
             i = 0
             answer = 1
             while i < count_value:
-                if int(value[i]) != 0: #sorting our numbers by iter but except 0
-                    answer = int(value[i]) * int(answer) #Making math as it asked
+                if int(value[i]) != 0:  #sorting our numbers by iter but except 0
+                    answer = int(value[i]) * int(answer)  #Making math as it asked
                 i += 1
             print(f'The answer is: {answer}')
             input('Enter to continue')

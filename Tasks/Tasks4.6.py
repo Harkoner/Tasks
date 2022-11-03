@@ -1,19 +1,19 @@
 from random import randint
 
 
-def task_n(): #Here is main func for selecting which task you wants to check
-    tasks = (Task1(), Task2(), Task3(), Task4(), Task5()) #Here is variable which contains args which is our funcs of task
+def task_n():  #Here is main func for selecting which task you wants to check
+    tasks = (Task1(), Task2(), Task3(), Task4(), Task5())  #Here is variable which contains args which is our funcs of task
     tasks_count = len(tasks)
     print(f'For now, is ready for check {tasks_count} tasks'.center(50))
     while True:
         task_number = input('Please choose the number of task you are looking for:'.center(50))
-        if task_number.isdigit(): #Check is inputed text is a number or not
+        if task_number.isdigit():  #Check is inputed text is a number or not
             task_number = int(task_number)
             if task_number <= tasks_count:
-                tasks[task_number - 1].start() #script to start our choosen task
+                tasks[task_number - 1].start()  #script to start our choosen task
             else:
                 print('Choose the correct number'.center(50))
-        elif task_number == 'esc': #extra func to exit the loop of choosing the tasks
+        elif task_number == 'esc':  #extra func to exit the loop of choosing the tasks
             break
         else:
             print('Choose the correct number'.center(50))
@@ -28,20 +28,20 @@ class Task1:
     def start(self):
         print('Task#1 [-Junior]')
         while True:
-            count = input('Type the count of numbers: ') #For testing is script work or not we are asking for count of random numbers
+            count = input('Type the count of numbers: ')  #For testing is script work or not we are asking for count of random numbers
+            rand_list = []
+            i = 0
+            sum = 0
             if count.isdigit():
                 count = int(count)
-                rand_list = []
-                i = 0
                 while count > i:
                     rand_list.append(randint(0, 100))
                     i += 1
             else:
                 print('Choose the correct number'.center(50))
             print('Bottom you can see the generated numbers:\n', rand_list)
-            sum = 0
             for i in range(len(rand_list)):
-                sum = rand_list[i] + sum
+                sum += rand_list[i]
             average = sum / count
             print('The average is: ', int(average))
             break
@@ -63,7 +63,7 @@ class Task2:
             y = randint(10, 99)
             print(f'Bottom you can see the generated numbers:\n{x} {y}\n')
             halving = x / y
-            print(str(int(halving))+",", int((float(halving)-int(halving))*10)) #it works, not how suppose to be, but it works
+            print(str(int(halving))+",", int((float(halving)-int(halving))*10))  #it works, not how suppose to be, but it works
             break
 
 
@@ -71,7 +71,7 @@ class Task3:
     """
     Дано: число с плавающей точкой.
     Задание: написать программу, которая будет округлять заданное число:
-    2х знаков после запятой;
+    2-х знаков после запятой;
     до целого;
     дополнять слева столько нулей, сколько не хватает числу до 11 знаков.
     Пример:
@@ -101,11 +101,11 @@ class Task4:
         print('Task#4 [Junior]')
         x = input('Please type any integer number: ')
         if int(x) > 0:
-            x = x[::-1] #inverting the number which is currently string
+            x = x[::-1]  #inverting the number which is currently string
         else:
-            x = int(x) * -1 #Now we said that our x is now int and we wants to invert them to positive for correct inverting string then
+            x = int(x) * -1  #Now we said that our x is now integer and we wants to invert them to positive for correct inverting string then
             x = str(x)[::-1]
-            x = int(x) * -1 #Just to put back minus for a number, but x still have format str.
+            x = int(x) * -1  #Just to put back minus for a number, but x still have format str.
         print(x)
 
 

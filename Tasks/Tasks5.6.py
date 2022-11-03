@@ -1,22 +1,23 @@
-def task_n(): #Here is main func for selecting which task you wants to check
-    tasks = (Task1(), Task2(), Task3(), Task4(), Task5(), Task6()) #Here is variable which contains args which is our funcs of task
+def task_n():  #Here is main func for selecting which task you wants to check
+    tasks = (Task1(), Task2(), Task3(), Task4(), Task5(), Task6())  #Here is variable which contains args which is our funcs of task
     tasks_count = len(tasks)
     print(f'For now, is ready for check {tasks_count} tasks'.center(50))
     while True:
         task_number = input('Please choose the number of task you are looking for:'.center(50))
-        if task_number.isdigit(): #Check is inputed text is a number or not
+        if task_number.isdigit():  #Check is inputed text is a number or not
             task_number = int(task_number)
             if task_number <= tasks_count:
-                tasks[task_number - 1].start() #script to start our choosen task
+                tasks[task_number - 1].start()  #script to start our choosen task
             else:
                 print('Choose the correct number'.center(50))
-        elif task_number == 'esc': #extra func to exit the loop of choosing the tasks
+        elif task_number == 'esc':  #extra func to exit the loop of choosing the tasks
             break
         else:
             print('Choose the correct number'.center(50))
 
 
 class Task1:
+
     """
     Задание:
     "Fizz buzz" это игра со словами, с помощью которой мы будем учить наших роботов делению. Давайте обучим компьютер.
@@ -26,6 +27,7 @@ class Task1:
     "Buzz", если число делится на 5;
     Число, как строку для остальных случаев.
     """
+
     def start(self):
         print('Task#1 [-Junior]')
         some_number = input('Please type the positive number: ')
@@ -102,7 +104,8 @@ class Task3:
 class Task4:
     """
 Дано: Дан кусок текста (str).
-Задание: Соберите все заглавные буквы в одно слово в том порядке как они встречаются в куске текста. Подсказка: посмотрите внимательно на методы класса str.
+Задание: Соберите все заглавные буквы в одно слово в том порядке как они встречаются в куске текста.
+Подсказка: посмотрите внимательно на методы класса str.
 Пример:
 текст = "How are you? Eh, ok. Low or Lower? Ohhh.", если мы соберем все заглавные буквы, то получим сообщение "HELLO".
     """
@@ -111,12 +114,13 @@ class Task4:
         asker = input('Do you want to put your own text? [y/n]')
         if asker == 'n':
             print('We have some sort of text down here:')
-            text = ('"Где умный человек прячет лист? В лесу. Но что если леса нет? ... Он выращивает лес и прячет его там." -- Гилберт Кит Честертон\n'
-                  'Когда-нибудь пробовали отправить секретное сообщение кому-то не пользуясь услугами почты?\n'
-                  'Вы можете использовать газету, чтобы рассказать кому-то свой секрет.\n'
-                  'Даже если кто-то найдет ваше сообщение, легко отмахнуться и сказать что это паранойя и теория заговора.\n'
-                  'Один из самых простых способов спрятать ваше секретное сообщение это использовать заглавные буквы.\n'
-                  'Давайте найдем несколько таких секретных сообщений.\n')
+            text = ('"Где умный человек прячет лист? В лесу. Но что если леса нет? ... '
+                    'Он выращивает лес и прячет его там." -- Гилберт Кит Честертон\n'
+                    'Когда-нибудь пробовали отправить секретное сообщение кому-то не пользуясь услугами почты?\n'
+                    'Вы можете использовать газету, чтобы рассказать кому-то свой секрет.\n'
+                    'Даже если кто-то найдет ваше сообщение, легко отмахнуться и сказать что это паранойя и теория заговора.\n'
+                    'Один из самых простых способов спрятать ваше секретное сообщение это использовать заглавные буквы.\n'
+                    'Давайте найдем несколько таких секретных сообщений.\n')
             print(text)
         else:
             text = input('Type your text: ')
@@ -145,16 +149,16 @@ text = "1 2 3 4", результат: False
     def start(self):
         print('Task#5 [Junior]')
         text = input('Please type your text: ')
-        text1 = text.split() #Here is we are splitting all our text string by string, it is sorting by blanks
+        text1 = text.split()  #Here is we are splitting all our text string by string, it is sorting by blanks
         i = 0
         answer = 0
         final_answer = False
         while i < len(text1):
-            if answer != 3: #Simple counter to find 3 words in a row
-                    if text1[i].isdigit():
-                        answer = 0
-                    else:
-                        answer += 1
+            if answer != 3:  #Simple counter to find 3 words in a row
+                if text1[i].isdigit():
+                    answer = 0
+                else:
+                    answer += 1
             else:
                 final_answer = True
             i += 1
@@ -182,7 +186,7 @@ class Task6:
             input('Enter to see the result')
         else:
             text = input()
-        rawtext = text.split(",") #Here is we are spliting our text by "," and making a list of them
+        rawtext = text.split(",")  #Here is we are spliting our text by "," and making a list of them
         text = text.replace("right", "left")
         text = text.replace("правши", "левши")
         text = text.replace("правшей", "левшей")
