@@ -1,15 +1,16 @@
-def task_n():
-    tasks = (Task1(), Task2(), Task3(), Task4(), Task5(), Task6())
-    print('For now, is ready for check 6 tasks'.center(50))
+def task_n(): #Here is main func for selecting which task you wants to check
+    tasks = (Task1(), Task2(), Task3(), Task4(), Task5(), Task6()) #Here is variable which contains args which is our funcs of task
+    tasks_count = len(tasks)
+    print(f'For now, is ready for check {tasks_count} tasks'.center(50))
     while True:
         task_number = input('Please choose the number of task you are looking for:'.center(50))
-        if task_number.isdigit():
+        if task_number.isdigit(): #Check is inputed text is a number or not
             task_number = int(task_number)
-            if task_number <= 6:
-                tasks[task_number - 1].start()
+            if task_number <= tasks_count:
+                tasks[task_number - 1].start() #script to start our choosen task
             else:
                 print('Choose the correct number'.center(50))
-        elif task_number == 'esc':
+        elif task_number == 'esc': #extra func to exit the loop of choosing the tasks
             break
         else:
             print('Choose the correct number'.center(50))
@@ -17,6 +18,11 @@ def task_n():
 
 # Task1
 class Task1:
+    """
+    Дано: имя и фамилия.
+    Задание: написать программу, которая будет приветствовать нового человека в мире Python. Текст приветсвия: Hello NAME SURNAME! You just delved into Python. Great start!
+    Пример: Hello Ibrahim Petrov! You just delved into Python. Great start!
+    """
     def start(self):
         print('Task#1 [-Junior]')
         print('Welcome to the python\n'
@@ -30,6 +36,11 @@ class Task1:
 
 # Task2
 class Task2:
+    """
+    Дано: маркер (символ) и толщина фигуры.
+    Задание: написать программу, которая будет отображать заданную фигуру.
+    Пример: Маркер = H, толщина 5.
+    """
     def picture(self):
         thickness = 5
         c = 'H'
@@ -69,6 +80,11 @@ class Task2:
 
 # Task3
 class Task3:
+    """
+    Дано: текст любой длины.
+    Задание: написать программу, которая выведет заголовок, используя заданный текст. Подсказка используйте метод title.
+    Пример: text = 'hello world'; результат = Hello World
+    """
     def start(self):
         print('Task#3 [-Junior]')
         input('Нажмите любую клавишу чтобы увидеть ответ')
@@ -80,6 +96,11 @@ class Task3:
 
 # Task4
 class Task4:
+    """
+    Дано: денежная сумма (amount > 0).
+    Задание: написать программу, которая распечатает число в принятом денежном формате XXX,XXX.XX.
+    Пример: amount = 100500.157; результат = 100,500.16
+    """
     def start(self):
         print('Task#4 [-Junior]')
         from random import uniform
@@ -103,6 +124,12 @@ class Task4:
 
 # Task5
 class Task5:
+    """
+    Дизайнер составил шаблон домашних ковриков. Для массового выпуска ковриков ему нужно уметь быстро составлять макет произвольного размера.
+    Известно, что длина коврика всегда больше в 3 раза чем его ширина (W = 3 * H).
+    Дано: ширина коврика.
+    Задание: написать программу, которая будет составлять макет коврика для его дальнейшего производства.
+    """
     def start(self):
         print('Task#5 [Junior]')
         print('Welcome to the carpet calculator.')
@@ -128,24 +155,23 @@ class Task5:
 
 
 class Task6:
+    """
+    Дано: целое число.
+    Задание: написать программу, которая перемножит все цифры заданного числа (0 - исключить).
+    Примеры: 1) value = 123405, результат = 120 2) value = 999, результат = 729 3) value = 1000, результат = 1 4) value = 1111, результат = 1
+    """
     def start(self):
         print('Task#6 [Junior+]')
         print('Welcome to the Strange Calculator, like a SC (bad joke)')
         value = input('Please type any number: ')
         if value.isdigit():
-            value = str(value)
-            count_value = len(value)
+            count_value = len(str(value))
             i = 0
-            result = []
             answer = 1
             while i < count_value:
-                if int(value[i]) != 0:
-                    result.append(int(value[i]))
+                if int(value[i]) != 0: #sorting our numbers by iter but except 0
+                    answer = int(value[i]) * int(answer) #Making math as it asked
                 i += 1
-            i = 0
-            while i < len(result):
-                    answer = int(result[i]) * int(answer)
-                    i += 1
             print(f'The answer is: {answer}')
             input('Enter to continue')
         else:
