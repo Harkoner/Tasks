@@ -2,16 +2,17 @@ from random import randint
 import random
 
 
-def tests(num_task, count):
+def tests(num_task: 'Contains a number of func we want to test',
+          count: 'contains a tech param') -> 'Call a func: tasks[num_task](test object, count)':
     if num_task == 1:
-        return tasks123[num_task](randint(5, 15), count)
+        return tasks[num_task](randint(5, 15), count)
     if num_task == 2:
-        return tasks123[num_task](randint(5, 15), count)
+        return tasks[num_task](randint(5, 15), count)
     if num_task == 3:
         test_list = []
         for x in range(5):
             test_list.append(randint(-20, 70))
-        return tasks123[num_task](test_list, count)
+        return tasks[num_task](test_list, count)
 
 
 def caller(num):
@@ -23,22 +24,25 @@ def caller(num):
         return 'Task#3 [-Junior]'
 
 
-def start():
+def start() -> 'Starting func':
     i = 0
-    num = int(input('please type the number of task: '))
-    test = input('Would you like to see multiple tests? [y/n]: ')
-    num_test = 1
-    if test == 'y':
-        num_test = int(input('Type the number of tests you would like to see: '))
-    print(caller(num))
-    while i < num_test:
-        print(tests(num, i+1))
-        i += 1
-    start()
+    num = input('please type the number of task: ')
+    if num != 'exit':
+        num = int(num)
+        test = input('Would you like to see multiple tests? [y/n]: ')
+        num_test = 1
+        if test == 'y':
+            num_test = int(input('Type the number of tests you would like to see: '))
+        print(caller(num))
+        while i < num_test:
+            print(tests(num, i+1))
+            i += 1
+        start()
 
 
 # task1
-def task1(num, count):
+def task1(num: 'testing obj type = int, in range[1:n]',
+          count: 'tech param') -> 'Started a task1 with num which is param of testing obj':
     """
     Дано: список (list) целых чисел (int).
     Задание: нужно найти сумму элементов с четными индексами (0-й, 2-й, 4-й итд), затем перемножить эту сумму и последний элемент исходного массива.
@@ -61,7 +65,8 @@ def task1(num, count):
     return f'{count}) Generated list: {elements}; {result = }'
 
 
-def cutter(list, n):
+def cutter(list: 'type = list, contains an items with non sorted digits format',
+           n: 'type = int, contains the number of digits after point') -> 'sorted list by param n':
     """
     Интереса ради написал функцию каттера.
     Которая должна перебирать все значения из списка list в котором хранятся числа в формате float
@@ -124,7 +129,7 @@ def task3(elements, count):
     return f'{count}) ' + 'reference: {}, result: {}'.format(elements, temp_elements)
 
 
-tasks123 = {
+tasks = {
         1: task1,
         2: task2,
         3: task3
