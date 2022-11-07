@@ -2,16 +2,16 @@ from random import randint
 import random
 
 
-def tests(num_task):
+def tests(num_task, count):
     if num_task == 1:
-        return tasks123[num_task](randint(5, 15))
+        return tasks123[num_task](randint(5, 15), count)
     if num_task == 2:
-        return tasks123[num_task](randint(5, 15))
+        return tasks123[num_task](randint(5, 15), count)
     if num_task == 3:
         test_list = []
         for x in range(5):
             test_list.append(randint(-20, 70))
-        return tasks123[num_task](test_list)
+        return tasks123[num_task](test_list, count)
 
 
 def caller(num):
@@ -26,16 +26,19 @@ def caller(num):
 def start():
     i = 0
     num = int(input('please type the number of task: '))
-    num_test = int(input('please type the number: '))
+    test = input('Would you like to see multiple tests? [y/n]: ')
+    num_test = 1
+    if test == 'y':
+        num_test = int(input('Type the number of tests you would like to see: '))
     print(caller(num))
     while i < num_test:
-        print(tests(num))
+        print(tests(num, i+1))
         i += 1
     start()
 
 
 # task1
-def task1(num):
+def task1(num, count):
     """
     Дано: список (list) целых чисел (int).
     Задание: нужно найти сумму элементов с четными индексами (0-й, 2-й, 4-й итд), затем перемножить эту сумму и последний элемент исходного массива.
@@ -55,7 +58,7 @@ def task1(num):
     else:
         result = 0
     result = result * tmp
-    return f'Generated list: {elements}; {result = }'
+    return f'{count}) Generated list: {elements}; {result = }'
 
 
 def cutter(list, n):
@@ -73,7 +76,7 @@ def cutter(list, n):
 
 
 # Task2
-def task2(num):
+def task2(num, count):
     """
     Дано: массив чисел (float или/и int).
     Задание: нужно найти разницу между самым большим (максимум) и самым малым (минимум) элементом. Если список пуст, то результат равен 0 (ноль).
@@ -95,11 +98,11 @@ def task2(num):
             result = result * -1
     else:
         result = 0
-    return 'elements: ' + str(cutter(elements, 4)) + ' result: ' + '{0:.3f}'.format(result)
+    return f'{count}) Elements: ' + str(cutter(elements, 4)) + ' result: ' + '{0:.3f}'.format(result)
 
 
 # Task3
-def task3(elements):
+def task3(elements, count):
     """
     Дано: кортеж (tuple) чисел.
     Задание: необходимо отсортировать их, но отсортировать на основе абсолютных значений в возрастающем порядке.
@@ -118,7 +121,7 @@ def task3(elements):
     for y in elements:
         if y < 0:
             temp_elements[temp_elements.index(y * -1)] = temp_elements[temp_elements.index(y * -1)] * -1
-    return 'reference: {}, result: {}'.format(elements, temp_elements)
+    return f'{count}) ' + 'reference: {}, result: {}'.format(elements, temp_elements)
 
 
 tasks123 = {
