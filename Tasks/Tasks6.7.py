@@ -130,7 +130,7 @@ def task3(elements, count):
     """
     temp_elements = elements[:]
     temp_elements.sort(key=abs)
-    return f'#{count} ' + 'reference: {}, result: {}'.format(elements, temp_elements)
+    return f'#{count} reference: {elements}, result: {temp_elements}'
 
 
 def task4(raw_list, count):
@@ -212,4 +212,5 @@ if __name__ == '__main__':
 6) Какие основные дополнения к питону стоит изучать? Тот же Django, Какие есть достойные аналоги?
 7) Питон часто используется для Data Science, так вот, какую литературу стоит посмотреть если хочешь работать в этом направлении?
    (Имеется в виду по мимо базы самого Питона)
+8) Аннотации, какие могут быть к ним рекомендации? Я попытался использовать их, но мне не особо понравилось, либо я их не особо правильно пишу.
 """

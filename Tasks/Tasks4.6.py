@@ -127,8 +127,7 @@ class Task5:
         if int(x) > 0:
             x = x[::-1]
         else:
-            x = int(x) * -1
-            x = str(x)[::-1]
+            x = str(abs(x))[::-1]
             x = int(x) * -1
         if int(positive32bit) < int(x) < int(negative32bit):
             print(x)

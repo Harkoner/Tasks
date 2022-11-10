@@ -169,8 +169,9 @@ class Task6:
             i = 0
             answer = 1
             while i < count_value:
-                if int(value[i]) != 0:  #sorting our numbers by iter but except 0
-                    answer = int(value[i]) * int(answer)  #Making math as it asked
+                current_value = int(value[i])
+                if current_value != 0:  #sorting our numbers by iter but except 0
+                    answer = current_value * int(answer)  #Making math as it asked
                 i += 1
             print(f'The answer is: {answer}')
             input('Enter to continue')
