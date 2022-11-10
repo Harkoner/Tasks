@@ -16,35 +16,18 @@ def tests(num_task: 'Contains a number of func we want to test',
         5: task5,
     }
     if num_task == 1:
-        test_list = []
-        for x in range(5):
-            test_list.append(randint(0, 20))
-        return tasks[num_task](test_list, count)
+        return tasks[num_task]([randint(0, 20) for i in range(randint(0, 8))], count)
     if num_task == 2:
-        test_list = []
-        for x in range(5):
-            test_list.append(random.uniform(-5.0, 15.0))
-        return tasks[num_task](test_list, count)
+        return tasks[num_task]([random.uniform(-5.0, 15.0) for i in range(randint(0, 8))], count)
     if num_task == 3:
-        test_list = []
-        for x in range(5):
-            test_list.append(randint(-20, 70))
-        return tasks[num_task](test_list, count)
+        return tasks[num_task]([randint(-20, 70) for i in range(5)], count)
     if num_task == 4:
-        test_list = []
-        for x in range(randint(1, 7)):
-            test_list.append(randint(0, 200))
-        return tasks[num_task](test_list, count)
+        return tasks[num_task]([randint(0, 200) for i in range(randint(1, 7))], count)
     if num_task == 5:
         list_of_words = WORDS[:]
-        sent = []
-        text = ''
-        for i in range(randint(3, 7)):
-            sent.append(str(random.choice(list_of_words))[2:-1])
-            word = ''
-        for x in sent:
-            text += x + ' '
-        return tasks[num_task](text[:-1], count)
+        text = ''.join([str(random.choice(list_of_words))[2:-1] + ' ' for x in range(randint(3, 7))])[:-1]
+        return tasks[num_task](text, count)
+
 
 def caller(num):
     if num == 1:
@@ -75,7 +58,7 @@ def start() -> 'Starting func':
             WORDS = response.content.splitlines()
         print(caller(num))
         while i < num_test:
-            print(tests(num, i+1, num_test, WORDS))
+            print(tests(num, i + 1, num_test, WORDS))
             i += 1
         start()
 
@@ -91,9 +74,11 @@ def task1(raw_list: 'Type = list',
     elements = [1, 3, 5], результат: 30
     elements = [] , результат: 0
     """
-    elements = raw_list[:]
-    tmp = elements[-1]
-    return f'{count}) Generated list: {raw_list}; result: list{elements[::2]}, Sum = {sum(elements[::2])}, devided by last number = {sum(elements[::2])*tmp if elements != [] else 0}'
+    if raw_list == []:
+        return f'#{count} Generated list: {raw_list}; result: {0}'
+    else:
+        elements = raw_list[:]
+        return f'#{count} Generated list: {raw_list}; result: even_index_list{elements[::2]}, Sum = {sum(elements[::2])}, devided by last number = {sum(elements[::2]) * elements[-1]}'
 
 
 def cutter(list: 'type = list, contains an items with non sorted digits format',
@@ -128,7 +113,7 @@ def task2(raw_list, count):
         result = max(elements) - min(elements)
     else:
         result = 0
-    return f'{count}) Elements: ' + str(cutter(elements, 4)) + ' result: ' + '{0:.3f}'.format(abs(result))
+    return f'#{count} Elements: ' + str(cutter(elements, 4)) + ' result: ' + '{0:.3f}'.format(abs(result))
 
 
 # Task3
@@ -145,7 +130,7 @@ def task3(elements, count):
     """
     temp_elements = elements[:]
     temp_elements.sort(key=abs)
-    return f'{count}) ' + 'reference: {}, result: {}'.format(elements, temp_elements)
+    return f'#{count} ' + 'reference: {}, result: {}'.format(elements, temp_elements)
 
 
 def task4(raw_list, count):
@@ -172,6 +157,8 @@ def task4(raw_list, count):
         return f'{count}) referenced: {raw_list} sorted: {temp_elements} result: {(temp_elements[index_temp_elements])}'
 
 
+# : parcing (почитать что это)
+
 def task5(text, count):
     """
     Дано: текст, как строка (str).
@@ -193,14 +180,14 @@ def task5(text, count):
     """
     vowels = 'aAeEiIoOuUyY'
     consonant = 'bBcCdDfFgGhHjJkKlLmMnNpPqQrRsStTvVwWxXzZ'
-    i = 0 #num of liter
+    i = 0  # num of liter
     answer = 0
     final_answer = 0
     text_list = text.split()
     for words in text_list:
         if len(words) != 1:
             while i + 1 < len(words):
-                if words[i] in vowels and words[i+1] in vowels:
+                if words[i] in vowels and words[i + 1] in vowels:
                     answer += 1
                 elif words[i] in consonant and words[i + 1] in consonant:
                     answer += 1
@@ -209,7 +196,20 @@ def task5(text, count):
             if answer == 0:
                 final_answer += 1
             answer = 0
-    return f'{count}) referenced: "{text}" result: {final_answer}'
+    return f'#{count} referenced: "{text}" result: {final_answer}'
+
 
 if __name__ == '__main__':
     start()
+
+# Questions
+"""
+1) Глобальные переменные - добро или зло?
+2) Функции в одну строку - это плохо или можно если возможно?
+3) В каждом задании учет правильность ввода скажем если в задании предусмотрен ввод списка или числа, а мы подаем строку или другой тип данных
+4) Плодить много переменных в функциях но реализовать программу или стоит все же использовать ООП и не заниматься ерундой?
+5) Что лучше? Решать много простых заданий и тратить по 5-10 минут на каждое, или делать 3-5 сложны заданий но каждое по 1-1.5 часа?
+6) Какие основные дополнения к питону стоит изучать? Тот же Django, Какие есть достойные аналоги?
+7) Питон часто используется для Data Science, так вот, какую литературу стоит посмотреть если хочешь работать в этом направлении?
+   (Имеется в виду по мимо базы самого Питона)
+"""
