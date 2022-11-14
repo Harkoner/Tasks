@@ -4,10 +4,10 @@ import string
 import requests
 
 
-def tests(num_task: 'Contains a number of func we want to test',
-          count: 'contains a tech param',
-          num_test: 'contains a number of tests',
-          WORDS: 'type = list') -> 'Call a func: tasks[num_task](test object, count)':
+def tests(num_task: int,
+          count: int,
+          num_test: int,
+          WORDS: list[str]) -> 'Call a func: tasks[num_task](test object, count)':
     tasks = {
         1: task1,
         2: task2,
@@ -42,7 +42,7 @@ def caller(num):
         return 'Task#5 [+Junior]'
 
 
-def start() -> 'Starting func':
+def start():
     i = 0
     WORDS = []
     num = input('please type the number of task: ')
@@ -64,8 +64,8 @@ def start() -> 'Starting func':
 
 
 # task1
-def task1(raw_list: 'Type = list',
-          count: 'tech param') -> 'Started a task1 with num which is param of testing obj':
+def task1(raw_list: list[int],
+          count: int):
     """
     Дано: список (list) целых чисел (int).
     Задание: нужно найти сумму элементов с четными индексами (0-й, 2-й, 4-й итд), затем перемножить эту сумму и последний элемент исходного массива.
@@ -81,8 +81,8 @@ def task1(raw_list: 'Type = list',
         return f'#{count} Generated list: {raw_list}; result: even_index_list{elements[::2]}, Sum = {sum(elements[::2])}, devided by last number = {sum(elements[::2]) * elements[-1]}'
 
 
-def cutter(list: 'type = list, contains an items with non sorted digits format',
-           n: 'type = int, contains the number of digits after point') -> 'sorted list by param n':
+def cutter(list: list[float],
+           n: int):
     """
     Интереса ради написал функцию каттера.
     Которая должна перебирать все значения из списка list в котором хранятся числа в формате float
@@ -157,8 +157,6 @@ def task4(raw_list, count):
         return f'{count}) referenced: {raw_list} sorted: {temp_elements} result: {(temp_elements[index_temp_elements])}'
 
 
-# : parcing (почитать что это)
-
 def task5(text, count):
     """
     Дано: текст, как строка (str).
@@ -201,16 +199,3 @@ def task5(text, count):
 
 if __name__ == '__main__':
     start()
-
-# Questions
-"""
-1) Глобальные переменные - добро или зло?
-2) Функции в одну строку - это плохо или можно если возможно?
-3) В каждом задании учет правильность ввода скажем если в задании предусмотрен ввод списка или числа, а мы подаем строку или другой тип данных
-4) Плодить много переменных в функциях но реализовать программу или стоит все же использовать ООП и не заниматься ерундой?
-5) Что лучше? Решать много простых заданий и тратить по 5-10 минут на каждое, или делать 3-5 сложны заданий но каждое по 1-1.5 часа?
-6) Какие основные дополнения к питону стоит изучать? Тот же Django, Какие есть достойные аналоги?
-7) Питон часто используется для Data Science, так вот, какую литературу стоит посмотреть если хочешь работать в этом направлении?
-   (Имеется в виду по мимо базы самого Питона)
-8) Аннотации, какие могут быть к ним рекомендации? Я попытался использовать их, но мне не особо понравилось, либо я их не особо правильно пишу.
-"""
