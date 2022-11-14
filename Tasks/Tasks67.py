@@ -1,71 +1,12 @@
 from random import randint
 import random
 import string
-import requests
+import settings
 
 
-def tests(num_task: int,
-          count: int,
-          num_test: int,
-          WORDS: list[str]) -> 'Call a func: tasks[num_task](test object, count)':
-    tasks = {
-        1: task1,
-        2: task2,
-        3: task3,
-        4: task4,
-        5: task5,
-    }
-    if num_task == 1:
-        return tasks[num_task]([randint(0, 20) for i in range(randint(0, 8))], count)
-    if num_task == 2:
-        return tasks[num_task]([random.uniform(-5.0, 15.0) for i in range(randint(0, 8))], count)
-    if num_task == 3:
-        return tasks[num_task]([randint(-20, 70) for i in range(5)], count)
-    if num_task == 4:
-        return tasks[num_task]([randint(0, 200) for i in range(randint(1, 7))], count)
-    if num_task == 5:
-        list_of_words = WORDS[:]
-        text = ''.join([str(random.choice(list_of_words))[2:-1] + ' ' for x in range(randint(3, 7))])[:-1]
-        return tasks[num_task](text, count)
-
-
-def caller(num):
-    if num == 1:
-        return 'Task#1 [-Junior]'
-    if num == 2:
-        return 'Task#2 [-Junior]'
-    if num == 3:
-        return 'Task#3 [-Junior]'
-    if num == 4:
-        return 'Task#4 [Junior]'
-    if num == 5:
-        return 'Task#5 [+Junior]'
-
-
-def start():
-    i = 0
-    WORDS = []
-    num = input('please type the number of task: ')
-    if num != 'exit':
-        num = int(num)
-        test = input('Would you like to see multiple tests? [y/n]: ')
-        num_test = 1
-        if test == 'y':
-            num_test = int(input('Type the number of tests you would like to see: '))
-        if num == 5:
-            word_site = "https://www.mit.edu/~ecprice/wordlist.10000"
-            response = requests.get(word_site)
-            WORDS = response.content.splitlines()
-        print(caller(num))
-        while i < num_test:
-            print(tests(num, i + 1, num_test, WORDS))
-            i += 1
-        start()
-
-
-# task1
-def task1(raw_list: list[int],
-          count: int):
+def task1(count: int,
+          manual: bool,
+          raw_list: list[int]):
     """
     Дано: список (list) целых чисел (int).
     Задание: нужно найти сумму элементов с четными индексами (0-й, 2-й, 4-й итд), затем перемножить эту сумму и последний элемент исходного массива.
@@ -97,7 +38,9 @@ def cutter(list: list[float],
 
 
 # Task2
-def task2(raw_list, count):
+def task2(count: int,
+          manual: bool,
+          raw_list):
     """
     Дано: массив чисел (float или/и int).
     Задание: нужно найти разницу между самым большим (максимум) и самым малым (минимум) элементом. Если список пуст, то результат равен 0 (ноль).
@@ -117,7 +60,9 @@ def task2(raw_list, count):
 
 
 # Task3
-def task3(elements, count):
+def task3(count: int,
+          manual: bool,
+          elements):
     """
     Дано: кортеж (tuple) чисел.
     Задание: необходимо отсортировать их, но отсортировать на основе абсолютных значений в возрастающем порядке.
@@ -133,7 +78,9 @@ def task3(elements, count):
     return f'#{count} reference: {elements}, result: {temp_elements}'
 
 
-def task4(raw_list, count):
+def task4(count: int,
+          manual: bool,
+          raw_list):
     """
     Дано: кортеж или список чисел.
     Задание: Медиана - это числовое значение, которое делит сортированый массив чисел на большую и меньшую половины.
@@ -157,7 +104,9 @@ def task4(raw_list, count):
         return f'{count}) referenced: {raw_list} sorted: {temp_elements} result: {(temp_elements[index_temp_elements])}'
 
 
-def task5(text, count):
+def task5(count: int,
+          manual: bool,
+          text):
     """
     Дано: текст, как строка (str).
     Задание: Наши Роботы никогда не упускают возможности, чтобы улучшить свои навыки в лингвистике. Сейчас они изучают английский алфавит и что с этим делать.
