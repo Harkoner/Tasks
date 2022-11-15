@@ -58,13 +58,15 @@ def task2(*args):
 
 
 # Task3
-def task3(*args, first_name = 'ivan', second_name = 'ivanov'):
+def task3(count, manual=False, text = 'hello world'):
     """
     Дано: текст любой длины.
     Задание: написать программу, которая выведет заголовок, используя заданный текст. Подсказка используйте метод title.
     Пример: text = 'hello world'; результат = Hello World
     """
-    return f'Hello, {first_name.title()}, {second_name.title()}!, You just delved into Python. Great start!'
+    if manual:
+        text = (input('please type the numbers in format "Hello world. Hows your day today?": '))
+    return f'#{count} Hello, {text.title()}!, You just delved into Python. Great start!'
 
 
 # Task4
@@ -74,11 +76,9 @@ def task4(count, manual=False, var=100500.345):
     Задание: написать программу, которая распечатает число в принятом денежном формате XXX,XXX.XX.
     Пример: amount = 100500.157; результат = 100,500.16
     """
-    if manual == False:
-        return f"#{count} Number: {var}, Result: {'{0:3,.3f}'.format(var)}"
-    else:
+    if manual:
         var = float(input('Type the float number: '))
-        return f"#{count} Number: {var}, Result: {'{0:3,.3f}'.format(var)}"
+    return f"#{count} Number: {var}, Result: {'{0:3,.3f}'.format(var)}"
 
 
 # Task5
@@ -108,11 +108,9 @@ def task5(count, manual=False, var=100500.345):
             print('Please use only numbers between 10 and 99!'.center(50))
             return task5(count, manual, ' ')
         return 'Thank you for using our service!'
-    if manual == True:
+    if manual:
         var = input("Please enter the height between 10 and 99: ")
-        return carpet(var)
-    else:
-        return carpet(var)
+    return carpet(var)
 
 
 
@@ -133,11 +131,9 @@ def task6(count, manual=False, value=100500):
                 answer = current_value * int(answer)  # Making math as it asked
             i += 1
         return f'#{count} Number: {value}, Result: {answer}'
-    if manual == False:
-        return calc(value)
-    else:
+    if manual:
         value = input('Please type any number: ')
-        return calc(value)
+    return calc(value)
 
 if __name__ == '__main__':
     print('Welcome to the Tasks3.6\n'
