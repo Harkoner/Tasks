@@ -65,7 +65,7 @@ def dict_task_lists(lesson_number=999):
     return tasks_list[lesson_number]
 
 
-def start(lesson_number):
+def start(lesson_number: int):
     counter = 1
     n = 1
     calldict = dict_task_lists(lesson_number)

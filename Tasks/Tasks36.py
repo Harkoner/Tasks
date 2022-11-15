@@ -6,7 +6,7 @@ import Tests
 import settings
 
 
-def task1(count, var='ivan ivanov'):
+def task1(count: int, var='ivan ivanov'):
     """
     Дано: имя и фамилия.
     Задание: написать программу, которая будет приветствовать нового человека в мире Python. Текст приветсвия: Hello NAME SURNAME! You just delved into Python. Great start!
@@ -57,7 +57,7 @@ def task2(*args):
 
 
 # Task3
-def task3(count, text='hello world'):
+def task3(count: int, text='hello world'):
     """
     Дано: текст любой длины.
     Задание: написать программу, которая выведет заголовок, используя заданный текст. Подсказка используйте метод title.
@@ -69,7 +69,7 @@ def task3(count, text='hello world'):
 
 
 # Task4
-def task4(count, var=100500.345):
+def task4(count: int, var=100500.345):
     """
     Дано: денежная сумма (amount > 0).
     Задание: написать программу, которая распечатает число в принятом денежном формате XXX,XXX.XX.
@@ -81,7 +81,7 @@ def task4(count, var=100500.345):
 
 
 # Task5
-def task5(count, var=100500.345):
+def task5(count: int, var=100500.345):
     """
     Дизайнер составил шаблон домашних ковриков. Для массового выпуска ковриков ему нужно уметь быстро составлять макет произвольного размера.
     Известно, что длина коврика всегда больше в 3 раза чем его ширина (W = 3 * H).
@@ -114,7 +114,7 @@ def task5(count, var=100500.345):
     return carpet(var)
 
 
-def task6(count, value=100500):
+def task6(count: int, value=100500):
     """
     Дано: целое число.
     Задание: написать программу, которая перемножит все цифры заданного числа (0 - исключить).

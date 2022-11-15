@@ -1,7 +1,7 @@
 import settings
 
 
-def task1(count, some_number=123):
+def task1(count: int, some_number=123):
 
     """
     Задание:
@@ -33,7 +33,7 @@ def task1(count, some_number=123):
         return f'#{count} x = {some_number}, result: "{answer}"'
 
 
-def task2(count, number=123):
+def task2(count: int, number=123):
     """
     Задание:
     Дано: Число x.
@@ -60,7 +60,7 @@ def task2(count, number=123):
     return f'#{count} number = {number}, result: "{answer}"'
 
 
-def task3(count, num=123):
+def task3(count: int, num=123):
     """
 Дано: Число N = [1-9].
 Задание: нужно написать программу, которая выведет последовательность 123..N
@@ -79,7 +79,7 @@ def task3(count, num=123):
     return f'#{count} number = {num}, result: "{int(answer[::-1])}"'
 
 
-def task4(count, text=''):
+def task4(count: int, text=''):
     """
 Дано: Дан кусок текста (str).
 Задание: Соберите все заглавные буквы в одно слово в том порядке как они встречаются в куске текста.
@@ -108,7 +108,7 @@ def task4(count, text=''):
     return f'#{count} number = {text}, result: "{answer}"'
 
 
-def task5(count, text= ''):
+def task5(count: int, text= ''):
     """
 Дано: Строка со словами (str).
 Задание: напишите программу, которая проверяет есть ли в исходной строке три слова подряд. Для примера, в строке "start 5 one two three 7 end" есть три слова подряд.
@@ -135,7 +135,7 @@ text = "1 2 3 4", результат: False
     return f'#{count} referenced: {text} {text1}, result: {final_answer}'
 
 
-def task6(count, text):
+def task6(count: int, text):
     """
 Дано: последовательность строк.
 Задание: вы должны объединить эти строки в блок текста, разделив изначальные строки запятыми.

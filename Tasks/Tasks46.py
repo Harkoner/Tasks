@@ -2,7 +2,7 @@ from random import randint
 import settings
 
 
-def task1(count, rand_list=[]):
+def task1(count: int, rand_list=[]):
     """
     Дано: 3 случайных числа.
     Задание: написать программу, которая будет вычислять среднее значение этих чисел.
@@ -21,7 +21,7 @@ def task1(count, rand_list=[]):
     return f'#{count} Generated: {rand_list} result: {int(average)}'
 
 
-def task2(count, raw_list=[]):
+def task2(count: int, raw_list=[]):
     """
     Дано: 2 случайных числа.
     Задание: написать программу, которая будет печать результат целочисленного деления этих чисел, а также остаток от деления первого от второго.
@@ -39,7 +39,7 @@ def task2(count, raw_list=[]):
     return f'#{count} Referenced: {raw_list}, result: {integer_number}, {rest}'
 
 
-def task3(count, number=123.123):
+def task3(count: int, number=123.123):
     """
     Дано: число с плавающей точкой.
     Задание: написать программу, которая будет округлять заданное число:
@@ -61,7 +61,7 @@ def task3(count, number=123.123):
     return f'#{count} Referece: {number}, 1) {float_number}, 2) {int_number}, 3) {null_float_number}'
 
 
-def task4(count, number=123):
+def task4(count: int, number=123):
     """
     Дано: целое число (int).
     Задание: написать программу, которая будет инвертировать целое число
@@ -82,7 +82,7 @@ def task4(count, number=123):
     return f'#{count} Referenced: {number}, Result: {number_replic}'
 
 
-def task5(count, number=123):
+def task5(count: int, number=123):
     """
     Дано: целое число (int).
     Задание: написать программу, которая будет инвертировать целое число. Если инвертированное число выходит за границы (32-bit integer)
