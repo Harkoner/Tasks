@@ -5,8 +5,7 @@ import settings
 
 
 def task1(count: int,
-          manual: bool,
-          raw_list = []):
+          raw_list=[]):
     """
     Дано: список (list) целых чисел (int).
     Задание: нужно найти сумму элементов с четными индексами (0-й, 2-й, 4-й итд), затем перемножить эту сумму и последний элемент исходного массива.
@@ -15,7 +14,7 @@ def task1(count: int,
     elements = [1, 3, 5], результат: 30
     elements = [] , результат: 0
     """
-    if manual:
+    if settings.Settings().manual:
         input_numbers = (input('please type the numbers in format "123 343 1 23": '))
         raw_list = [int(number) for number in input_numbers.split()]
     if raw_list == []:
@@ -42,8 +41,7 @@ def cutter(list: list[float],
 
 # Task2
 def task2(count: int,
-          manual: bool,
-          raw_list = []):
+          raw_list=[]):
     """
     Дано: массив чисел (float или/и int).
     Задание: нужно найти разницу между самым большим (максимум) и самым малым (минимум) элементом. Если список пуст, то результат равен 0 (ноль).
@@ -54,7 +52,7 @@ def task2(count: int,
     elements = [10.2, -2.2, 0, 1.1, 0.5], результат: 12.4
     elements = [] , результат: 0
     """
-    if manual:
+    if settings.Settings().manual:
         input_numbers = (input('please type the numbers in format "123 343 1 23": '))
         raw_list = [int(number) for number in input_numbers.split()]
     elements = raw_list[:]
@@ -67,8 +65,7 @@ def task2(count: int,
 
 # Task3
 def task3(count: int,
-          manual: bool,
-          elements = []):
+          elements=[]):
     """
     Дано: кортеж (tuple) чисел.
     Задание: необходимо отсортировать их, но отсортировать на основе абсолютных значений в возрастающем порядке.
@@ -79,7 +76,7 @@ def task3(count: int,
     elements = (1, 2, 3, 0), результат: [0, 1, 2, 3]
     elements = (-1, -2, -3, 0), результат: [0, -1, -2, -3]
     """
-    if manual:
+    if settings.Settings().manual:
         input_numbers = (input('please type the numbers in format "123 343 1 23": '))
         elements = [int(number) for number in input_numbers.split()]
     temp_elements = elements[:]
@@ -88,8 +85,7 @@ def task3(count: int,
 
 
 def task4(count: int,
-          manual: bool,
-          raw_list = []):
+          raw_list=[]):
     """
     Дано: кортеж или список чисел.
     Задание: Медиана - это числовое значение, которое делит сортированый массив чисел на большую и меньшую половины.
@@ -104,7 +100,7 @@ def task4(count: int,
     elements = [1, 300, 2, 200, 1], результат: 2
     elements = [3, 6, 20, 99, 10, 15], результат: 12.5
     """
-    if manual:
+    if settings.Settings().manual:
         input_numbers = (input('please type the numbers in format "123 343 1 23": '))
         raw_list = [int(number) for number in input_numbers.split()]
     temp_elements = raw_list[:]
@@ -117,8 +113,7 @@ def task4(count: int,
 
 
 def task5(count: int,
-          manual: bool,
-          text = ''):
+          text=''):
     """
     Дано: текст, как строка (str).
     Задание: Наши Роботы никогда не упускают возможности, чтобы улучшить свои навыки в лингвистике. Сейчас они изучают английский алфавит и что с этим делать.
@@ -137,7 +132,7 @@ def task5(count: int,
     text = "A quantity of striped words.", результат: 1
     text = "Dog,cat,mouse,bird.Human.", результат: 3
     """
-    if manual:
+    if settings.Settings().manual:
         text = (input('please type the numbers in format "Hello world. Hows your day today?": '))
     vowels = 'aAeEiIoOuUyY'
     consonant = 'bBcCdDfFgGhHjJkKlLmMnNpPqQrRsStTvVwWxXzZ'

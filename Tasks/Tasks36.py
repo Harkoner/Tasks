@@ -2,18 +2,17 @@ from random import uniform
 from random import randint
 import random
 import string
-
 import Tests
 import settings
 
 
-def task1(count, manual=False, var='ivan ivanov'):
+def task1(count, var='ivan ivanov'):
     """
     Дано: имя и фамилия.
     Задание: написать программу, которая будет приветствовать нового человека в мире Python. Текст приветсвия: Hello NAME SURNAME! You just delved into Python. Great start!
     Пример: Hello Ibrahim Petrov! You just delved into Python. Great start!
     """
-    if manual == False:
+    if settings.Settings().manual == False:
         first_name = 'ivan'
         second_name = 'ivanov'
         return f"#{count} Hello, {var.title()}!, you just delved into Python. Great start"
@@ -58,37 +57,38 @@ def task2(*args):
 
 
 # Task3
-def task3(count, manual=False, text = 'hello world'):
+def task3(count, text='hello world'):
     """
     Дано: текст любой длины.
     Задание: написать программу, которая выведет заголовок, используя заданный текст. Подсказка используйте метод title.
     Пример: text = 'hello world'; результат = Hello World
     """
-    if manual:
+    if settings.Settings().manual:
         text = (input('please type the numbers in format "Hello world. Hows your day today?": '))
     return f'#{count} Hello, {text.title()}!, You just delved into Python. Great start!'
 
 
 # Task4
-def task4(count, manual=False, var=100500.345):
+def task4(count, var=100500.345):
     """
     Дано: денежная сумма (amount > 0).
     Задание: написать программу, которая распечатает число в принятом денежном формате XXX,XXX.XX.
     Пример: amount = 100500.157; результат = 100,500.16
     """
-    if manual:
+    if settings.Settings().manual:
         var = float(input('Type the float number: '))
     return f"#{count} Number: {var}, Result: {'{0:3,.3f}'.format(var)}"
 
 
 # Task5
-def task5(count, manual=False, var=100500.345):
+def task5(count, var=100500.345):
     """
     Дизайнер составил шаблон домашних ковриков. Для массового выпуска ковриков ему нужно уметь быстро составлять макет произвольного размера.
     Известно, что длина коврика всегда больше в 3 раза чем его ширина (W = 3 * H).
     Дано: ширина коврика.
     Задание: написать программу, которая будет составлять макет коврика для его дальнейшего производства.
     """
+
     def carpet(height_number):
         if height_number.isdigit():
             height = int(height_number)
@@ -108,18 +108,19 @@ def task5(count, manual=False, var=100500.345):
             print('Please use only numbers between 10 and 99!'.center(50))
             return task5(count, manual, ' ')
         return 'Thank you for using our service!'
-    if manual:
+
+    if settings.Settings().manual:
         var = input("Please enter the height between 10 and 99: ")
     return carpet(var)
 
 
-
-def task6(count, manual=False, value=100500):
+def task6(count, value=100500):
     """
     Дано: целое число.
     Задание: написать программу, которая перемножит все цифры заданного числа (0 - исключить).
     Примеры: 1) value = 123405, результат = 120 2) value = 999, результат = 729 3) value = 1000, результат = 1 4) value = 1111, результат = 1
     """
+
     def calc(value):
         count_value = len(str(value))
         i = 0
@@ -131,9 +132,11 @@ def task6(count, manual=False, value=100500):
                 answer = current_value * int(answer)  # Making math as it asked
             i += 1
         return f'#{count} Number: {value}, Result: {answer}'
-    if manual:
+
+    if settings.Settings().manual:
         value = input('Please type any number: ')
     return calc(value)
+
 
 if __name__ == '__main__':
     print('Welcome to the Tasks3.6\n'
