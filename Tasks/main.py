@@ -63,11 +63,11 @@ def main_monitor(func):
 
     return realiser
 
-
+#Декоратор для вывода только тестов
 def tests_monitor(func):
     right = 70
 
-    # ╠ ═ ╣ ╔ ╦ ╗ ║ ╚ ╩ ╝ ╬ ═     '║'.ljust(1), on_top, '║'.rjust(right - 1 - len(on_top), ' '
+    # ╠ ═ ╣ ╔ ╦ ╗ ║ ╚ ╩ ╝ ╬ ═
     def realiser(*args, **kwargs):
         terra = func(*args, **kwargs)
         # on_top = WordsAsker.get_on_top(*args, **kwargs)
@@ -83,20 +83,20 @@ def tests_monitor(func):
 
     return realiser
 
-
+# Декоратор для вывода меню и тестов одновременно
 def monitor_lessons_tests(func):
     right = 25
     rright = 75
 
-    # ╠ ═ ╣ ╔ ╦ ╗ ║ ╚ ╩ ╝ ╬ ═     '║'.ljust(1), on_top, '║'.rjust(right - 1 - len(on_top), ' '
+    # ╠ ═ ╣ ╔ ╦ ╗ ║ ╚ ╩ ╝ ╬ ═
     def realiser(*args, **kwargs):
         terra = func(*args, **kwargs)
         x, y = args[0], args[1]
         on_top = WordsAsker.lessons[x]
-        centralise1 = int(
+        centralise = int(
             ((len('║'.ljust(1)) + len(on_top) + len('║'.rjust(right - 1 - len(on_top), ' '))) / 2) - (len(on_top)) / 2)
         print('╔'.ljust(right + 1, '═') + '╦'+''.rjust(rright - 1, '═') + '╗')
-        print('║'.ljust(1), ' ' * (centralise1 - 1), on_top, '║'.rjust(right - 1 - len(on_top) - centralise1, ' ') +
+        print('║'.ljust(1), ' ' * (centralise - 1), on_top, '║'.rjust(right - 1 - len(on_top) - centralise, ' ') +
               ''.rjust(int((rright - 1)/2)-2, ' ') + 'Tests' + ''.rjust(int((rright - 1)/2)-3, ' ') + '║')
         print('╠'.ljust(right + 1, '═') + '╬' + ''.rjust(rright - 1, '═') + '╣')
         first_terra = terra[0]
