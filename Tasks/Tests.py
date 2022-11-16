@@ -12,7 +12,7 @@ import random
 def tests(num_task: int,
           count: int,
           file_name: int) -> 'Call a func: tasks[num_task](test object, count)':
-    word_list = main.WordsAssker.WORDS
+    word_list = main.WordsAsker.WORDS
     tasks = {
         1: {1: Tasks36.task1,
             2: Tasks36.task2,
@@ -61,7 +61,7 @@ def tests(num_task: int,
             5: str(randint(10, 100)),
             6: randint(1, 10000),
             },
-        2: {1: [randint(0, 100) in [x for x in range(randint(1, 10))]],
+        2: {1: [randint(0, 100) for i in [x for x in range(randint(1, 10))]],
             2: [randint(100, 200), randint(10, 99)],
             3: random.uniform(1.0, 15.0),
             4: randint(-500, 500),

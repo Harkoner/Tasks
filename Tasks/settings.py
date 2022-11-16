@@ -3,7 +3,7 @@ import main
 
 class Settings:
     manual = False
-    test_count = 5
+    test_count = 8
 
     def main_settings(self):
         print('Settings:')

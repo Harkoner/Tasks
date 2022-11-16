@@ -3,25 +3,120 @@ import settings
 import requests
 
 
-def mainstart():
-    print('Main board')
+class WordsAsker:
+    word_site = "https://www.mit.edu/~ecprice/wordlist.10000"
+    response = requests.get(word_site)
+    WORDS = response.content.splitlines()
     lessons = {
-        1: '1st lesson tasks (Tasks36.py)',
-        2: '2nd lesson tasks (Tasks46.py)',
-        3: '3rd lesson tasks (Tasks56.py)',
-        4: '4th lesson tasks (Tasks67.py)',
+        1: 'Tasks36.py',
+        2: 'Tasks46.py',
+        3: 'Tasks56.py',
+        4: 'Tasks67.py',
         5: 'Settings',
         6: 'Exit the program',
         # 7: '5th lesson tasks (Tasks36.py)',
     }
-    n = 1
-    for number, variant in lessons.items():
-        print(f'{n}.. ' + variant)
-        n += 1
+
+    def get_on_top(self, lesson):
+        return WordsAsker.lessons[lesson]
+
+
+# Декоратор для страницы с заданиями
+def monitor(func):
+    right = 25
+
+    # ╠ ═ ╣ ╔ ╦ ╗ ║ ╚ ╩ ╝ ╬ ═     '║'.ljust(1), on_top, '║'.rjust(right - 1 - len(on_top), ' '
+    def realiser(*args, **kwargs):
+        terra = func(*args, **kwargs)
+        # on_top = WordsAsker.get_on_top(*args, **kwargs)
+        on_top = 1
+        for index in args:
+            on_top = WordsAsker.lessons[index]
+        centralise = int(
+            ((len('║'.ljust(1)) + len(on_top) + len('║'.rjust(right - 1 - len(on_top), ' '))) / 2) - (len(on_top)) / 2)
+        print('╔'.ljust(right + 1, '═') + '╗')
+        print('║'.ljust(1), ' ' * (centralise - 1), on_top, '║'.rjust(right - 1 - len(on_top) - centralise, ' '))
+        print('╠'.ljust(right + 1, '═') + '╣')
+        for line in terra:
+            print('║'.ljust(1), line, '║'.rjust(right - 1 - len(line), ' '))
+        print('╚'.ljust(right + 1, '═') + '╝')
+
+    return realiser
+
+
+# Декоратор для главной страницы
+def main_monitor(func):
+    right = 25
+
+    # ╠ ═ ╣ ╔ ╦ ╗ ║ ╚ ╩ ╝ ╬ ═     '║'.ljust(1), on_top, '║'.rjust(right - 1 - len(on_top), ' '
+    def realiser(*args, **kwargs):
+        terra = func(*args, **kwargs)
+        on_top = 'Main board'
+        centralise = int(((len('║'.ljust(1)) + len(on_top) + len('║'.rjust(right - 1 - len(on_top), ' '))) / 2) - (
+            len(on_top)) / 2)
+        print('╔'.ljust(right + 1, '═') + '╗')
+        print('║'.ljust(1), ' ' * (centralise - 1), on_top, '║'.rjust(right - 1 - len(on_top) - centralise, ' '))
+        print('╠'.ljust(right + 1, '═') + '╣')
+        for line in terra:
+            print('║'.ljust(1), line, '║'.rjust(right - 1 - len(line), ' '))
+        print('╚'.ljust(right + 1, '═') + '╝')
+
+    return realiser
+
+
+def tests_monitor(func):
+    right = 70
+
+    # ╠ ═ ╣ ╔ ╦ ╗ ║ ╚ ╩ ╝ ╬ ═     '║'.ljust(1), on_top, '║'.rjust(right - 1 - len(on_top), ' '
+    def realiser(*args, **kwargs):
+        terra = func(*args, **kwargs)
+        # on_top = WordsAsker.get_on_top(*args, **kwargs)
+        on_top = 'Tests'
+        centralise = int(((len('║'.ljust(1)) + len(on_top) + len('║'.rjust(right - 1 - len(on_top), ' '))) / 2) - (
+            len(on_top)) / 2)
+        print('╔'.ljust(right + 1, '═') + '╗')
+        print('║'.ljust(1), ' ' * (centralise - 1), on_top, '║'.rjust(right - 1 - len(on_top) - centralise, ' '))
+        print('╠'.ljust(right + 1, '═') + '╣')
+        for line in terra:
+            print('║'.ljust(1), line, '║'.rjust(right - 1 - len(line), ' '))
+        print('╚'.ljust(right + 1, '═') + '╝')
+
+    return realiser
+
+
+def monitor_lessons_tests(func):
+    right = 25
+    rright = 75
+
+    # ╠ ═ ╣ ╔ ╦ ╗ ║ ╚ ╩ ╝ ╬ ═     '║'.ljust(1), on_top, '║'.rjust(right - 1 - len(on_top), ' '
+    def realiser(*args, **kwargs):
+        terra = func(*args, **kwargs)
+        x, y = args[0], args[1]
+        on_top = WordsAsker.lessons[x]
+        centralise1 = int(
+            ((len('║'.ljust(1)) + len(on_top) + len('║'.rjust(right - 1 - len(on_top), ' '))) / 2) - (len(on_top)) / 2)
+        print('╔'.ljust(right + 1, '═') + '╦'+''.rjust(rright - 1, '═') + '╗')
+        print('║'.ljust(1), ' ' * (centralise1 - 1), on_top, '║'.rjust(right - 1 - len(on_top) - centralise1, ' ') +
+              ''.rjust(int((rright - 1)/2)-2, ' ') + 'Tests' + ''.rjust(int((rright - 1)/2)-3, ' ') + '║')
+        print('╠'.ljust(right + 1, '═') + '╬' + ''.rjust(rright - 1, '═') + '╣')
+        first_terra = terra[0]
+        second_terra = terra[1]
+        ara = zip(first_terra, second_terra)
+        for line, test in ara:
+            print('║'.ljust(1), line, '║'.rjust(right - 1 - len(line), ' '), test,
+                  '║'.rjust(rright - 2 - len(test), ' '))
+
+        print('╚'.ljust(right + 1, '═') + '╩' + ''.rjust(rright - 1, '═') + '╝')
+
+    return realiser
+
+
+def mainstart():
+    current_main_board()
     lesson_number = int(input('please select the point by typing his number: '))
-    if lesson_number == len(lessons) - 1:
+    if lesson_number == len(WordsAsker.lessons) - 1:
         return settings.Settings().main_settings()
-    if lesson_number == len(lessons):
+    if lesson_number == len(WordsAsker.lessons):
         return print('Thank you for using our program!'.center(50))
     start(lesson_number)
     mainstart()
@@ -67,31 +162,61 @@ def dict_task_lists(lesson_number=999):
 
 def start(lesson_number: int):
     counter = 1
-    n = 1
+    tests = []
     calldict = dict_task_lists(lesson_number)
-    for number, variant in dict_task_lists(lesson_number).items():
-        print(f'{n}.. ' + variant)
-        n += 1
+    current_lesson(lesson_number)
     num = int(input('please select the point by typing his number: '))
     if num == len(calldict) - 1:
         return settings.Settings().main_settings()
     if num != len(calldict):
         num = int(num)
-        print(calldict[num])
+        # print(calldict[num])
         if settings.Settings().manual:
             print(Tests.tests(num, counter, lesson_number))
         else:
             while counter < settings.Settings().test_count + 1:
-                print(Tests.tests(num, counter, lesson_number))
+                tests.append(Tests.tests(num, counter, lesson_number))
                 counter += 1
+        current_lesson_and_tests(lesson_number, tests)
         input('Enter to continue')
         start(lesson_number)
 
 
-class WordsAssker:
-    word_site = "https://www.mit.edu/~ecprice/wordlist.10000"
-    response = requests.get(word_site)
-    WORDS = response.content.splitlines()
+@monitor
+def current_lesson(lesson):
+    n = 1
+    answer = []
+    for number, variant in dict_task_lists(lesson).items():
+        answer.append(f'{n}.. ' + variant)
+        n += 1
+    return answer
+
+
+@monitor_lessons_tests
+def current_lesson_and_tests(lesson, test):
+    n = 1
+    lesson_answer = []
+    for number, variant in dict_task_lists(lesson).items():
+        lesson_answer.append(f'{n}.. ' + variant)
+        n += 1
+    answer = [lesson_answer, test]
+
+    return answer
+
+
+@main_monitor
+def current_main_board():
+    n = 1
+    answer = []
+    for number, variant in WordsAsker.lessons.items():
+        answer.append(f'{n}.. ' + variant)
+        n += 1
+    return answer
+
+
+@tests_monitor
+def show_test(tests):
+    return tests
 
 
 if __name__ == '__main__':
