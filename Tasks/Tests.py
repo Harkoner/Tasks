@@ -76,10 +76,10 @@ def tests(num_task: int,
             },
         4: {
             1: [randint(0, 20) for i in range(randint(0, 8))],
-            2: [random.uniform(-5.0, 15.0) for i in range(randint(0, 8))],
+            2: [random.uniform(-5.0, 15.0) for i in range(randint(0, 5))],
             3: [randint(-20, 70) for i in range(5)],
             4: [randint(0, 200) for i in range(randint(1, 7))],
-            5: ''.join([str(random.choice(word_list))[2:-1] + ' ' for x in range(randint(3, 7))])[
+            5: ''.join([str(random.choice(word_list))[2:-1] + ' ' for x in range(randint(3, 5))])[
                :-1] if num_task == 5 else '',
         }
     }

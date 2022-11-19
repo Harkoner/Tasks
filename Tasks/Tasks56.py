@@ -132,7 +132,7 @@ text = "1 2 3 4", результат: False
         if answer == 3:
             final_answer = True
         i += 1
-    return f'#{count} referenced: {text} {text1}, result: {final_answer}'
+    return f'#{count} referenced: {text}, result: {final_answer}'
 
 
 def task6(count: int, text):

@@ -1,7 +1,10 @@
 import Tests
 import settings
 import requests
+import itertools
 
+
+# Module pickle
 
 class WordsAsker:
     word_site = "https://www.mit.edu/~ecprice/wordlist.10000"
@@ -16,9 +19,10 @@ class WordsAsker:
         6: 'Exit the program',
         # 7: '5th lesson tasks (Tasks36.py)',
     }
+    iteration = False
 
-    def get_on_top(self, lesson):
-        return WordsAsker.lessons[lesson]
+    # def get_on_top(self, lesson):
+    #     return WordsAsker.lessons[lesson]
 
 
 # Декоратор для страницы с заданиями
@@ -88,7 +92,7 @@ def tests_monitor(func):
 # Декоратор для вывода меню и тестов одновременно
 def monitor_lessons_tests(func):
     right = 25
-    rright = 75
+    rright = 90
 
     # ╠ ═ ╣ ╔ ╦ ╗ ║ ╚ ╩ ╝ ╬ ═
     def realiser(*args, **kwargs):
@@ -97,17 +101,19 @@ def monitor_lessons_tests(func):
         on_top = WordsAsker.lessons[x]
         centralise = int(
             ((len('║'.ljust(1)) + len(on_top) + len('║'.rjust(right - 1 - len(on_top), ' '))) / 2) - (len(on_top)) / 2)
+
         print('╔'.ljust(right + 1, '═') + '╦' + ''.rjust(rright - 1, '═') + '╗')
         print('║'.ljust(1), ' ' * (centralise - 1), on_top, '║'.rjust(right - 1 - len(on_top) - centralise, ' ') +
-              ''.rjust(int((rright - 1) / 2) - 2, ' ') + 'Tests' + ''.rjust(int((rright - 1) / 2) - 3, ' ') + '║')
+              ''.rjust(int((rright - 1) / 2) - 2, ' ') + 'Tests' + ''.rjust(int((rright - 1) / 2) - 2, ' ') + '║')
         print('╠'.ljust(right + 1, '═') + '╬' + ''.rjust(rright - 1, '═') + '╣')
+
         first_terra = terra[0]
         second_terra = terra[1]
-        ara = zip(first_terra, second_terra)
+        ara = itertools.zip_longest(first_terra, second_terra)
         for line, test in ara:
-            print('║'.ljust(1), line, '║'.rjust(right - 1 - len(line), ' '), test,
-                  '║'.rjust(rright - 2 - len(test), ' '))
-
+            test = test if test else ' '
+            line = line if line else ' '
+            print('║'.ljust(1), line, '║'.rjust(right - 1 - len(line), ' '), test, '║'.rjust(rright - 2 - len(test), ' '))
         print('╚'.ljust(right + 1, '═') + '╩' + ''.rjust(rright - 1, '═') + '╝')
 
     return realiser
@@ -120,11 +126,12 @@ def mainstart():
         return settings.Settings().main_settings()
     if lesson_number == len(WordsAsker.lessons):
         return print('Thank you for using our program!'.center(50))
+    WordsAsker.iteration = False
     start(lesson_number)
     mainstart()
 
 
-def dict_task_lists(lesson_number=999):
+def dict_task_lists(lesson_number=None):
     tasks_list = {
         1: {1: 'Task#1 - [-Junior]',
             2: 'Task#2 - [-Junior]',
@@ -157,7 +164,7 @@ def dict_task_lists(lesson_number=999):
             6: 'Settings',
             7: 'Back to main', },
     }
-    if lesson_number == 999:
+    if lesson_number is None:
         return mainstart()
     return tasks_list[lesson_number]
 
@@ -166,7 +173,8 @@ def start(lesson_number: int):
     counter = 1
     tests = []
     calldict = dict_task_lists(lesson_number)
-    current_lesson(lesson_number)
+    if not WordsAsker.iteration:
+        current_lesson_and_tests(lesson_number, tests)
     num = int(input('please select the point by typing his number: '))
     if num == len(calldict) - 1:
         return settings.Settings().main_settings()
@@ -174,13 +182,14 @@ def start(lesson_number: int):
         num = int(num)
         # print(calldict[num])
         if settings.Settings().manual:
-            print(Tests.tests(num, counter, lesson_number))
+            # print(Tests.tests(num, counter, lesson_number))
+            tests.append(Tests.tests(num, counter, lesson_number))
         else:
             while counter < settings.Settings().test_count + 1:
                 tests.append(Tests.tests(num, counter, lesson_number))
                 counter += 1
+        WordsAsker.iteration = True
         current_lesson_and_tests(lesson_number, tests)
-        input('Enter to continue')
         start(lesson_number)
 
 

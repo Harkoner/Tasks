@@ -64,7 +64,7 @@ def task3(count: int, text='hello world'):
     Пример: text = 'hello world'; результат = Hello World
     """
     if settings.Settings().manual:
-        text = (input('please type the numbers in format "Hello world. Hows your day today?": '))
+        text = (input('please type your name in format "ivan ivanovich": '))
     return f'#{count} Hello, {text.title()}!, You just delved into Python. Great start!'
 
 

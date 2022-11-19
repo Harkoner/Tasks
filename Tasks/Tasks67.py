@@ -21,7 +21,7 @@ def task1(count: int,
         return f'#{count} Generated list: {raw_list}; result: {0}'
     else:
         elements = raw_list[:]
-        return f'#{count} Generated list: {raw_list}; result: even_index_list{elements[::2]}, Sum = {sum(elements[::2])}, devided by last number = {sum(elements[::2]) * elements[-1]}'
+        return f'#{count} Generated list: {raw_list}; result: {sum(elements[::2]) * elements[-1]}'
 
 
 def cutter(list: list[float],
@@ -107,9 +107,9 @@ def task4(count: int,
     temp_elements.sort()
     index_temp_elements = int(len(temp_elements) / 2)
     if len(temp_elements) % 2 == 0:
-        return f'{count}) referenced: {raw_list} sorted: {temp_elements} result: {(temp_elements[index_temp_elements] + temp_elements[index_temp_elements - 1]) / 2}'
+        return f'{count}) referenced: {raw_list} result: {(temp_elements[index_temp_elements] + temp_elements[index_temp_elements - 1]) / 2}'
     else:
-        return f'{count}) referenced: {raw_list} sorted: {temp_elements} result: {(temp_elements[index_temp_elements])}'
+        return f'{count}) referenced: {raw_list} result: {(temp_elements[index_temp_elements])}'
 
 
 def task5(count: int,
