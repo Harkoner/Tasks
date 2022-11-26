@@ -3,6 +3,7 @@ import Tasks36
 import Tasks46
 import Tasks56
 import Tasks67
+import Tasks7
 from random import uniform
 from random import randint
 import settings
@@ -40,7 +41,14 @@ def tests(num_task: int,
             3: Tasks67.task3,
             4: Tasks67.task4,
             5: Tasks67.task5,
-        }
+        },
+        5: {
+            1: Tasks7.task1,
+            # 2: Tasks7.task2,
+            # 3: Tasks7.task3,
+            # 4: Tasks7.task4,
+            # 5: Tasks7.task5,
+        },
     }
 
     first_name = ['kolya', 'igor', 'vasya', 'anatoliy', 'sasha', 'tanya', 'ivan', 'stepa', 'nastya', 'vitaly']
@@ -81,7 +89,15 @@ def tests(num_task: int,
             4: [randint(0, 200) for i in range(randint(1, 7))],
             5: ''.join([str(random.choice(word_list))[2:-1] + ' ' for x in range(randint(3, 5))])[
                :-1] if num_task == 5 else '',
-        }
+        },
+        5: {
+            1: None,
+            # 2: [random.uniform(-5.0, 15.0) for i in range(randint(0, 5))],
+            # 3: [randint(-20, 70) for i in range(5)],
+            # 4: [randint(0, 200) for i in range(randint(1, 7))],
+            # 5: ''.join([str(random.choice(word_list))[2:-1] + ' ' for x in range(randint(3, 5))])[
+            #    :-1] if num_task == 5 else '',
+        },
     }
     if settings.Settings().manual:
         return tasks[file_name][num_task](count)

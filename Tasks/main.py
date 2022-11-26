@@ -15,9 +15,9 @@ class WordsAsker:
         2: 'Tasks46.py',
         3: 'Tasks56.py',
         4: 'Tasks67.py',
-        5: 'Settings',
-        6: 'Exit the program',
-        # 7: '5th lesson tasks (Tasks36.py)',
+        5: 'Tasks7.py',
+        6: 'Settings',
+        7: 'Exit the program',
     }
     iteration = False
 
@@ -161,6 +161,13 @@ def dict_task_lists(lesson_number=None):
             3: 'Task#3 - [-Junior]',
             4: 'Task#4 - [Junior]',
             5: 'Task#5 - [+Junior]',
+            6: 'Settings',
+            7: 'Back to main', },
+        5: {1: 'Task#1 - [-Junior]',
+            # 2: 'Task#2 - [-Junior]',
+            # 3: 'Task#3 - [-Junior]',
+            # 4: 'Task#4 - [Junior]',
+            # 5: 'Task#5 - [+Junior]',
             6: 'Settings',
             7: 'Back to main', },
     }
