@@ -20,7 +20,6 @@ class WordsAsker:
         7: 'Exit the program',
     }
     iteration = False
-
     # def get_on_top(self, lesson):
     #     return WordsAsker.lessons[lesson]
 
