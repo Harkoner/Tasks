@@ -23,6 +23,11 @@ def get_palindrome(data):
     return answer
 
 
+def get_palindrome_view(data):
+    answer = get_palindrome(data)
+    return f'{data}, result: {answer}'
+
+
 if __name__ == '__main__':
     data = 'lol'
-    print(get_palindrome(data))
+    print(get_palindrome_view(data))
