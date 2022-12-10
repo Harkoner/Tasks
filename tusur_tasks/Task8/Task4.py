@@ -1,41 +1,47 @@
+"""
+[Junior] 4. Дешифратор.
+Дано: шифровальная решетка (4 на 4) и зашифрованный пароль (4 на 4) представлены, как массив строк.
+Задание. Помогите Софи написать дешифратор для паролей, которые Никола зашифровал с помощью шифровальной решетки.
+Шифрорешетка - это квадрат 4 на 4 с четырьмя вырезанными окошками.
+Поместите решетку на листе бумаги такого же размера с буквами,
+выписываете первые 4 символа, которые видно в окошках (см. рисунок).
+Затем поверните решетку на 90 градусов по часовой стрелке.
+Выпишите следующие символы и повторите поворот. В итоге процедура повторяется 4 раза.
+Таким образом сложно узнать пароль без специальной решетки.
+Напишите программу, которая поможет проводить данную процедуру.
+Пример:
+(('X...',
+'..X.',
+'X..X',
+'....'),
+('itdf',
+'gdce',
+'aton',
+'qrdi'), результат: 'icantforgetiddqd'
+
+(('....',
+'X..X',
+'.X..',
+'...X'),
+('xhwc',
+'rsqx',
+'xqzz',
+'fyzr')), результат: 'rxqrwsfzxqxzhczy'
+"""
 def decoder(data: tuple) -> str:
     """
-    [Junior] 4. Дешифратор.
-    Дано: шифровальная решетка (4 на 4) и зашифрованный пароль (4 на 4) представлены, как массив строк.
-    Задание. Помогите Софи написать дешифратор для паролей, которые Никола зашифровал с помощью шифровальной решетки.
-    Шифрорешетка - это квадрат 4 на 4 с четырьмя вырезанными окошками.
-    Поместите решетку на листе бумаги такого же размера с буквами,
-    выписываете первые 4 символа, которые видно в окошках (см. рисунок).
-    Затем поверните решетку на 90 градусов по часовой стрелке.
-    Выпишите следующие символы и повторите поворот. В итоге процедура повторяется 4 раза.
-    Таким образом сложно узнать пароль без специальной решетки.
-    Напишите программу, которая поможет проводить данную процедуру.
-    Пример:
-    (('X...',
-    '..X.',
-    'X..X',
-    '....'),
-    ('itdf',
-    'gdce',
-    'aton',
-    'qrdi'), результат: 'icantforgetiddqd'
-
-    (('....',
-    'X..X',
-    '.X..',
-    '...X'),
-    ('xhwc',
-    'rsqx',
-    'xqzz',
-    'fyzr')), результат: 'rxqrwsfzxqxzhczy'
+    decoder function is for getting password from raw data
+    which contains tuple with 2 tuples
+    1st contains a cross_list as 'key' to get password
+    2nd contains a pass_list as 'code'
     """
-    answer = ''
+    password = ''
     crossed_list, pass_list = matrix_constructor(data)
     for _ in range(4):
         crossed_code = get_id(crossed_list)
-        answer += get_decode(crossed_code, pass_list)
+        password += get_decode(crossed_code, pass_list)
         crossed_list = rotator(crossed_list)
-    return answer
+    return password
 
 
 def decoder_view(data: tuple) -> str:
@@ -43,7 +49,7 @@ def decoder_view(data: tuple) -> str:
     Function as view for decoder
     """
     crossed_list, pass_list = matrix_constructor(data)
-    answer = decoder(data)
+    password = decoder(data)
     for i in range(4):
         print(f'{i + 1} iteration')
         for i in range(4):
@@ -52,7 +58,7 @@ def decoder_view(data: tuple) -> str:
         print(f'decoder code: {crossed_code}')
         crossed_list = rotator(crossed_list)
         print('-' * 50)
-    return f'Password: {answer}'
+    return f'Password: {password}'
 
 
 def get_id(crossed_list: list) -> list:
@@ -81,10 +87,10 @@ def get_decode(crossed_code, pass_list) -> str:
     """
     function decoding current matrix of crossed_code with original pass_list
     """
-    answer = ''
+    piece_password = ''
     for i, j in crossed_code:
-        answer += pass_list[i][j]
-    return answer
+        piece_password += pass_list[i][j]
+    return piece_password
 
 
 def matrix_constructor(data: tuple) -> tuple:
@@ -96,11 +102,13 @@ def matrix_constructor(data: tuple) -> tuple:
     crossed_list = []
     pass_list = []
     tmp_list = []
+    # constructing a matrix as crossed_list
     for string in new_data[0]:
         for element in string:
             tmp_list.append(element)
         crossed_list.append(tmp_list)
         tmp_list = []
+    # constructing a matrix as pass_list
     for string in new_data[1]:
         for element in string:
             tmp_list.append(element)
