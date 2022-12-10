@@ -150,7 +150,3 @@ def task5(count: int,
                 final_answer += 1
             answer = 0
     return f'#{count} referenced: "{text}" result: {final_answer}'
-
-
-if __name__ == '__main__':
-    start()

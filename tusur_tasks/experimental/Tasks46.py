@@ -107,5 +107,3 @@ def task5(count: int, number=123):
         return f'#{count} Referenced: {number}, Result: {0}'
 
 
-if __name__ == '__main__':
-    task_n()

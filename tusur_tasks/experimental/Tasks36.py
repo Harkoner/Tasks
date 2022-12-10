@@ -8,8 +8,6 @@ def task1(count: int, var='ivan ivanov'):
     Пример: Hello Ibrahim Petrov! You just delved into Python. Great start!
     """
     if settings.Settings().manual == False:
-        first_name = 'ivan'
-        second_name = 'ivanov'
         return f"#{count} Hello, {var.title()}!, you just delved into Python. Great start"
     else:
         print('Please enter your First name')
@@ -98,10 +96,10 @@ def task5(count: int, var=100500.345):
                     print(('.|.' * stick_count).center(width, '-'))
             elif height not in range(10, 100, 1):
                 print('Choose the correct number'.center(50))
-                return task5(count, manual, ' ')
+                return task5(count)
         else:
             print('Please use only numbers between 10 and 99!'.center(50))
-            return task5(count, manual, ' ')
+            return task5(count)
         return 'Thank you for using our service!'
 
     if settings.Settings().manual:

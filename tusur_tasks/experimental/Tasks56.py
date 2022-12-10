@@ -157,7 +157,3 @@ def task6(count: int, text):
     rawtext = rawtext.replace("правши", "левши")
     rawtext = rawtext.replace("правшей", "левшей")
     return f'#{count} referenced: {text}, result: {rawtext}'
-
-
-if __name__ == '__main__':
-    task_n()
